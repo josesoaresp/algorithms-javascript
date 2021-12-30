@@ -71,7 +71,7 @@
   <script>
     document.getElementById("calculator").addEventListener("click", () => {
       document.getElementById("fibonacciSequence").innerHTML = ""
-      let number = parseInt(document.getElementById("number").value) || 0
+      const number = parseInt(document.getElementById("number").value) || 0
 
       if (number <= 0) {
         const value = 0

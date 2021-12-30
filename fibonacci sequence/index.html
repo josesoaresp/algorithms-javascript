@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fibonacci sequence</title>
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h1 {
+      text-align: center;
+    }
+    input {
+      font-size: 18px;
+      border-radius: 5px;
+      margin: 5px 20%;
+      padding: 10px;
+      text-align: center;
+    }
+    input[type=button] {
+      background-color: blueviolet;
+      border: 0;
+      color: white;
+    }
+    span {
+      text-align: center;
+      margin: 10px 25px;
+      font-size: 38px;
+    }
+  </style>
+
+  <script>
+    const fibonacci = (n) => {
+      if (n <= 1) return n
+
+      return fibonacci(n-1) + fibonacci(n-2)
+    }
+
+    const setFibonacciNumber = (value) => {
+      document.getElementById("fibonacciNumber").innerHTML = value
+    }
+
+    const setFibonacciSequence = (value) => {
+      document.getElementById("fibonacciSequence").innerHTML += value > 0 ? ", " + value : value
+    }
+
+    const getFibonacci = (number) => {
+      for (let index = 0; index <= number; index++) {
+        const value = fibonacci(index)
+
+        if (index === number)
+          setFibonacciNumber(value)
+        setFibonacciSequence(value)
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Fibonacci</h1>
+  <input type="number" value=0 id="number">
+  <input type="button" value="Calculate" id="calculator">
+  <span>Fibonacci Number</span>
+  <span id="fibonacciNumber"></span>
+  <span>Fibonacci sequence</span>
+  <span id="fibonacciSequence"></span>
+
+  <script>
+    document.getElementById("calculator").addEventListener("click", () => {
+      document.getElementById("fibonacciSequence").innerHTML = ""
+      let number = parseInt(document.getElementById("number").value) || 0
+
+      if (number <= 0) {
+        const value = 0
+        setFibonacciNumber(value)
+        setFibonacciSequence(value)
+        return
+      }
+
+      getFibonacci(number)
+    });
+  </script>
+</body>
+</html>

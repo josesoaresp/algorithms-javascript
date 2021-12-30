@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odd or Even</title>
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h1 {
+      text-align: center;
+    }
+    input {
+      font-size: 18px;
+      border-radius: 5px;
+      margin: 5px 20%;
+      padding: 10px;
+      text-align: center;
+    }
+    input[type=button] {
+      background-color: blueviolet;
+      border: 0;
+      color: white;
+    }
+    span {
+      text-align: center;
+      margin: 10px 25px;
+      font-size: 38px;
+    }
+  </style>
+
+  <script>
+    const oddOrEven = (n) => {
+      if (n < 0) n *= -1
+      return n % 2
+    }
+
+    const showResult = (value) => {
+      document.getElementById("result").innerHTML = value ? 'Odd' : 'Even'
+    }
+  </script>
+</head>
+<body>
+  <h1>Odd or Even</h1>
+  <input type="number" value=0 id="number">
+  <input type="button" value="Calculate" id="calculator">
+  <span id="result"></span>
+
+  <script>
+    document.getElementById("calculator").addEventListener("click", () => {
+      const number = parseInt(document.getElementById("number").value) || 0
+
+      const result = oddOrEven(number)
+      showResult(result)
+    });
+  </script>
+</body>
+</html>
